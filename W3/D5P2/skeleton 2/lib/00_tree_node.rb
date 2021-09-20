@@ -42,4 +42,31 @@ class PolyTreeNode
     # raise 'ree' unless children.include?(child)
   end
 
+
+#class Searchable
+  
+  def dfs(val) # val is the target we are looking for
+    #found = false the specs only give us 1 parameter
+    return nil if self.nil?
+    return self if value == val
+    self.children.each do |child|
+      result = child.dfs(val)
+      return result unless result.nil?
+    end
+    nil
+  end
+
+  def bfs(val) # first in, first out
+    queue = [] 
+    queue.unshift(self)
+    until queue.empty?
+      current = queue.pop
+      return current if current.value == val
+        current.children.each do |child|
+          queue.unshift(child)
+        end
+    end
+    nil
+  end
 end
+
