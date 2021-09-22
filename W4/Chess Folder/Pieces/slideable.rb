@@ -3,10 +3,28 @@ module Slidable
     hor = []
     row = self.pos[0]
     
-    @board.grid[row].each do |space| 
-      if space.is_a?(NullPiece) || self.color != space.color
+    until @board.grid[row] >= 7
+      if space.is_a?(NullPiece)
         hor << space
+      elsif self.color != space.color
+        hor << space
+        @board.grid[row] = 7
+      elsif self.color == space.color
+         @board.grid[row] = 7
       end
+      @board.grid[row] += 1
+    end
+
+    until @board.grid[row] <= 0
+      if space.is_a?(NullPiece)
+        hor << space
+      elsif self.color != space.color
+        hor << space
+        @board.grid[row] = 0
+      elsif self.color == space.color
+         @board.grid[row] = 0
+      end
+      @board.grid[row] -= 1
     end
     hor
   end

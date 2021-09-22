@@ -10,4 +10,8 @@ class Rook < Piece
     # @pos = pos
     super(color, grid, pos)
   end
+
+  def move_dirs
+    vertical + horizontal
+  end
 end

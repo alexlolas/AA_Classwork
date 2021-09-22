@@ -12,7 +12,6 @@ class Bishop < Piece
   end
 
   def move_dirs
-    possible_moves = diagonal 
-    
+    diagonal
   end
 end
