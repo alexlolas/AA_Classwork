@@ -3,16 +3,18 @@
 # require_relative "pawn"
 # require_relative "rook_bishop_queen"
 
-
+require "byebug"
 module Slidable
   def horizontal
     hor = []
     row = self.pos[0]
-    @grid[row].each do |space| 
+    
+    @board.grid[row].each do |space| 
       if space.is_a?(NullPiece)
         hor << space
       end
     end
+    hor
   end
 
   def vertical 
@@ -27,7 +29,20 @@ module Slidable
   end
 
   def diagonal 
+    diag = []
+    row_idx = self.pos[0]
+    col_idx = self.pos[1]
+    until row_idx == 7 || col_idx == 7
+      diag << [row_idx, col_idx]
+      row_idx += 1
+      col_idx += 1
+    end
 
+     until row_idx == 0 || col_idx == 0
+      diag << [row_idx, col_idx]
+      row_idx -= 1
+      col_idx -= 1
+    end
   end
 
 end
@@ -43,10 +58,10 @@ class Piece
   include(Slidable)
   attr_reader :color, :grid
   attr_accessor :moves, :pos
-  def initialize(color, grid, pos)
+  def initialize(color, board, pos)
     @color = color
     @pos = pos
-    @grid = grid
+    @board = board
     @moves = []
   end
 
