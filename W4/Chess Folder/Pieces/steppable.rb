@@ -14,9 +14,10 @@ module Steppable
     valid_moves = []
 
     arr.each do |space|
-      if (@board.grid[space[0]][space[1]].is_a?(NullPiece)) && ((space[0] > 0 && space[1] > 0) && (space[0] < 8 && space[1] < 8))
+      if (@board.grid[space[0]][space[1]].is_a?(NullPiece)) && @board.grid.valid_pos?(space)
         valid_moves << space
-      elsif self.color != @board.grid[space[0]][space[1]].color && ((space[0] > 0 && space[1] > 0) && (space[0] < 8 && space[1] < 8))
+      elsif self.color != @board.grid[space[0]][space[1]].color && @board.grid.valid_pos?(space)
+        valid_moves << space
       end
     end
     valid_moves
@@ -37,7 +38,9 @@ module Steppable
     valid_moves = []
 
     arr.each do |space|
-      if (@board.grid[space[0]][space[1]].is_a?(NullPiece)) && ((space[0] > 0 && space[1] > 0) && (space[0] < 8 && space[1] < 8))
+      if (@board.grid[space[0]][space[1]].is_a?(NullPiece)) && @board.grid.valid_pos?(space)
+        valid_moves << space
+      elsif self.color != @board.grid[space[0]][space[1]].color && @board.grid.valid_pos?(space)
         valid_moves << space
       end
     end

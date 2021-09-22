@@ -108,6 +108,10 @@ class Board
   def move_piece!(start_pos, end_pos)
     if self[start_pos].is_a?(NullPiece)
       raise "Cannot move that piece."
+    elsif !self.valid_pos?([end_pos])
+      raise "Cannot move here."
+    elsif !self.valid_pos?([start_pos])
+      raise "Cannot start here."
     end
     self[end_pos] = self[start_pos]
     self[start_pos] = NullPiece.new

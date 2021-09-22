@@ -10,4 +10,9 @@ class Bishop < Piece
     # @pos = pos
     super(color, grid, pos)
   end
+
+  def move_dirs
+    possible_moves = diagonal 
+    
+  end
 end
