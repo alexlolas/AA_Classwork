@@ -4,6 +4,7 @@
 # require_relative "rook_bishop_queen"
 
 class Piece
+  attr_reader :color, :board, :pos
   def initialize(color, board, pos)
     @color = color
     @pos = pos
