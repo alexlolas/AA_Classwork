@@ -102,7 +102,10 @@ class Board
   #   # end
   # end
 
-  def move_piece(start_pos, end_pos)
+  def move_piece!(start_pos, end_pos)
+    if self[start_pos].is_a?(NullPiece)
+      raise "Cannot move that piece."
+    end
     self[end_pos] = self[start_pos]
     self[start_pos] = NullPiece.new
     self[end_pos].pos = end_pos
@@ -112,5 +115,5 @@ class Board
 
   end
 
-
+  
 end
