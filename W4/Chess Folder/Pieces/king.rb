@@ -6,4 +6,9 @@ class King < Piece
   def initialize(color, board, pos)
     super(color, board, pos)
   end
+
+  def move_dirs
+    king
+  end
+
 end
