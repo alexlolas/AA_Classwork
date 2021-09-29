@@ -52,17 +52,21 @@ CREATE TABLE question_likes (
 INSERT INTO 
   users (fname, lname)
 VALUES
-  ('Travis',  'Scott');
+  ('Travis', 'Scott'),
+  ('Dave', 'Peel');
 
 INSERT INTO
   questions (title, body, user_id)
 VALUES
-('Question Subject', 'How are you', (SELECT id FROM users WHERE fname = 'Travis'));
+('Question Subject', 'How are you', (SELECT id FROM users WHERE fname = 'Travis')),
+('Questions', 'Where are you', (SELECT id FROM users WHERE fname = 'Dave'));
 
 INSERT INTO 
 replies (reply, parent_reply_id, question_id, user_id)
 VALUES
-('I am good', NULL, (SELECT id FROM questions WHERE body = 'How are you'), (SELECT id FROM users WHERE fname = 'Travis'));
+('I am good', NULL, (SELECT id FROM questions WHERE body = 'How are you'), (SELECT id FROM users WHERE fname = 'Travis')),
+('I am here', NULL, (SELECT id FROM questions WHERE body = 'Where are you'), (SELECT id FROM users WHERE fname = 'Dave')),
+('I am there', NULL, (SELECT id FROM questions WHERE body = 'How are you'), (SELECT id FROM users WHERE fname = 'Travis'));
 
 INSERT INTO
 question_follows (users_id, questions_id)
