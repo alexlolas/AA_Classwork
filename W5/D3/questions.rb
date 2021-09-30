@@ -11,7 +11,7 @@ class QuestionsDatabase < SQLite3::Database
   end
 end
 
-class Users 
+class Users
   attr_accessor :fname, :lname, :id
 
   def self.find_by_id(id)
@@ -20,10 +20,28 @@ class Users
     Users.new(data)    
   end 
 
+  def self.find_by_name(fname, lname) # STRINGS
+    row = QuestionsDatabase.instance.execute("SELECT * FROM users WHERE fname='#{fname}' AND lname='#{lname}'")
+    # row = QuestionsDatabase.instance.execute(<<-SQL, fname, lname)
+    #   SELECT * 
+    #   FROM users 
+    #   WHERE fname = ? AND lname = ?
+    #   SQL
+    arr = []
+    row.each do |ele|
+      arr << Users.new(ele)
+    end
+    arr
+  end
+
   def initialize(hash)
     @id = hash['id']
     @first_name = hash['fname']
     @last_name = hash['lname']
+  end 
+
+  def authored_questions
+    Questions.find_by_author_id(id)
   end 
 end
 
@@ -39,8 +57,11 @@ class Questions
 
   def self.find_by_author_id(author_id)
     row = QuestionsDatabase.instance.execute("SELECT * FROM questions WHERE user_id=#{author_id}")
-    data = row[0]
-    Questions.new(data)
+    arr = []
+    row.each do |ele|
+      arr << Questions.new(ele)
+    end 
+    arr
   end
 
   def initialize(hash)
@@ -73,6 +94,15 @@ class Replies
     data = row[0]
     Replies.new(data)    
   end
+
+  def self.find_by_question_id(question_id)
+    row = QuestionsDatabase.instance.execute("SELECT * FROM replies WHERE question_id=#{question_id}")
+    array = []
+    row.each do |ele|
+      array << Replies.new(ele)
+    end
+    array
+  end 
 
   def self.find_by_user_id(user_id)
     row = QuestionsDatabase.instance.execute("SELECT * FROM replies WHERE user_id=#{user_id}")
