@@ -18,4 +18,12 @@ class Course < ApplicationRecord
   has_many :enrolled_students,
     through: :enrollments,
     source: :user
+
+  # belongs_to :prereq,
+  #   primary_key: :id,
+  #   foreign_key: :prereq_id,
+  #   class_name: :Enrollment 
+  
+  
+  
 end

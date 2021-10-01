@@ -20,6 +20,9 @@ class Enrollment < ApplicationRecord
     foreign_key: :course_id,
     class_name: :Course
 
-
+  # has_many :reqs,
+  #   primary_key: :course_id,
+  #   foreign_key: :prereq_id,
+  #   class_name: :Course
 
 end
