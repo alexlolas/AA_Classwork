@@ -17,7 +17,7 @@ class CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params)
     if @cat.save
-      redirect_to cat_url(@cat)
+      redirect_to users_url(@cat.user_id)
     else
       flash.now[:errors] = @cat.errors.full_messages
       render :new
@@ -42,6 +42,6 @@ class CatsController < ApplicationController
   private
 
   def cat_params
-    params.require(:cat).permit(:age, :birth_date, :color, :description, :name, :sex)
+    params.require(:cat).permit(:age, :birth_date, :color, :description, :name, :sex, :user_id)
   end
 end
