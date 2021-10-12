@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  before_action :require_logged_in, :show
+  before_action :require_logged_in, [:show]
   before_action :require_logged_out, [:create, :new]
 
+  def index
+    @user = User.all
+    render :index
+  end
   def new
     @user = User.new
     render :new

@@ -10,7 +10,7 @@
 
   <body>
     <header>
-      <h1>Cats</h1>
+      <h1>Users</h1>
       <% if logged_in?%>
       <h2>Hello, <%= current_user.username %></h2>
       <form action="<%=session_url%>" method="POST">
@@ -18,7 +18,7 @@
         </form>
         <%else%>
         <a href="<%=new_user_url%>">Sign Up</a>
-        <a href="<%=new_sessions_url %>">Log In</a>
+        <a href="<%=new_session_url %>">Log In</a>
       <% end %>
     </header>
     <%= yield %>

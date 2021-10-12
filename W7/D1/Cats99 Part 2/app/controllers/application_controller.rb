@@ -17,15 +17,19 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
+    
     redirect_to new_session_url unless logged_in?
   end
   
   def require_logged_out
+    
     redirect_to users_url if logged_in?
   end
 
   def login(user)
     session[:session_token] = user.reset_session_token!
   end
+
+  
 
 end
