@@ -135,3 +135,7 @@ Migrating to CreateUsers (20211013212626)
   ↳ bin/rails:9
   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
   ↳ bin/rails:9
+  [1m[35m (148.3ms)[0m  [1m[35mCREATE DATABASE "GoalsApp_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (70.9ms)[0m  [1m[35mCREATE DATABASE "GoalsApp_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
