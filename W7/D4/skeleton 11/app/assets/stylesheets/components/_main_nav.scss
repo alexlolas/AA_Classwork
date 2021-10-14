@@ -4,19 +4,24 @@
   padding: 15px;
 }
 
+#sections-sidebar-btn, #search-modal-btn{
+  display: block;
+  padding: 10px 20px;
+}
+
 .left-nav > ul,
 .right-nav > ul {
   display: flex;
   align-items: flex-end;
   border-left: 20px;
-    border-right: 20px;
+  border-right: 20px;
 }
 
 .left-nav {
 
   > ul {
     > li {
-
+       
     }
   }
 
@@ -45,5 +50,5 @@
 
 .left-nav > ul > li:hover,
 .right-nav > ul > li:last-of-type:hover {
-
+background: $light-gray;
 }
