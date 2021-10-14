@@ -9,12 +9,24 @@
   padding: 10px 20px;
 }
 
+button {
+margin: 3px;
+}
+
+#gear {
+ font-size: 2em;
+}
+
+i + span {
+  padding: 10px 5px; 
+}
 .left-nav > ul,
 .right-nav > ul {
   display: flex;
   align-items: flex-end;
   border-left: 20px;
   border-right: 20px;
+  padding: 10px;
 }
 
 .left-nav {
