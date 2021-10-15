@@ -17,6 +17,8 @@ class SubsController < ApplicationController
 
   def create
     @sub = Sub.new(sub_params)
+    @sub.moderator_id = current_user.id
+    
     if @sub.save
       redirect_to sub_url(@sub.id)
     else
@@ -35,8 +37,18 @@ class SubsController < ApplicationController
     end
   end
 
+  def update
+    @sub = Sub.find(params[:id])
+    if @sub.update(sub_params)
+      redirect_to sub_url(@sub.id)
+    else
+      flash.now[:errors] = ["Invalid title"]
+      render :edit
+    end
+  end
+
   def sub_params
-    params.require(:sub).permit(:title, :description)
+    params.require(:subs).permit(:title, :description)
   end
 
 
