@@ -1,0 +1,12 @@
+<form action="<%=user_url%>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<label> username
+<input type="text" name="user[username]" value="<%=@user.username%>"></label>
+<br/>
+
+<label> password
+<input type="password" name="user[password]" value=""></label>
+<br/>
+
+<input type="button" value="CREATE USER">
+</form>
