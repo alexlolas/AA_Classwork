@@ -10,6 +10,25 @@
   </head>
 
   <body>
+  <% if !current_user.nil? %>
+  
+  <form action="<%=session_url%>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+   <input type="submit" value="Log Out">
+  </form>
+  <% else %>
+  <form action="<%=new_user_url%>" method="get">
+  <input type="submit" value="Create User">  
+  </form>
+  <% end %>
     <%= yield %>
   </body>
+  <ol>
+  <% if flash[:errors] != nil %>
+  <% flash[:errors].each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+  <% end %>
+  </ol>
 </html>
