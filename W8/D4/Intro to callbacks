@@ -1,7 +1,0 @@
-class Clock {
-  constructor(hour, minute, seconds) {
-  this.hour = hour
-  this.minute = minute
-  this.seconds = seconds
-  }
-}
