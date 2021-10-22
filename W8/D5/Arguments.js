@@ -37,20 +37,35 @@ class Dog {
 const markov = new Cat("Markov");
 const pavlov = new Dog("Pavlov");
 
-function threeSum (number) {
-  let sum = 0;
-  const array = [number];
-  return function curryNum (num) {
-  
-    if (array.length === 3) {
-      for (let i = 0; i < 3; i++) {
-        sum += array[i];
-        console.log(sum);
-      }
-    } else {
-      array.push(num);
-      return curryNum;
-    } 
-  }
+// function threeSum (number) {
+//   let sum = 0;
+//   const array = [number];
+//   return function curryNum (num) {
+//     array.push(num);
+//     if (array.length === 3) {
+//       for (let i = 0; i < 3; i++) {
+//         sum += array[i];
+//         console.log(sum);
+//       }
+//     } else {
+//       return sum;
+//     } 
+//   }
+// }
+
+function sumThree(num1, num2, num3) {
+  console.log(num1 + num2 + num3)
 }
 
+Function.prototype.curry = function (numArgs) {
+  const arr = [];
+  let that = this
+  return function curryArr(item) {
+    arr.push(item)
+    if (arr.length === numArgs) {
+        that.apply(null, arr)
+    } else {
+     return curryArr
+    }
+  }
+}
