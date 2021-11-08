@@ -6,6 +6,7 @@ import Tile from './tile'
     super(props)
     this.board = props.board
     this.updategame = props.updategame
+
     
   }
 
@@ -15,7 +16,7 @@ import Tile from './tile'
             {this.board.grid.map( (row, i) => {
               return <div className="row" key={`row-${i}`}> 
                 {row.map((tile, j) => {
-                  return <Tile tile={tile} key={j}  updateGame={this.props.updateGame}/>
+                  return <Tile tile={tile} key={j}  updateGame={this.updategame}/>
                 }) }
               </div>
             })}

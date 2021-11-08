@@ -8,11 +8,21 @@ export default class Game extends React.Component {
     super(props)
     const board = new Minesweeper.Board(9, 10)
     this.state = { board: board }
-    this.updategame = this.updateGame.bind(this) 
+    this.updategame = this.updateGame.bind(this)
+    this.bombed = '☢️'
+    this.flagged = '⚑'
+
   }
 
-  updateGame(){
-
+  updateGame(tile, flagged){
+    if (flagged) {
+      tile.toggleFlag()
+    } else if (tile.adjacentBombCount() === 0){
+      tile.explore()
+    } else {
+      tile.explored = true
+    }
+    this.setState({ board: this.state.board })
   }
 
   render(){
