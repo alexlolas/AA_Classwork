@@ -32,10 +32,10 @@ var receiveStep = function receiveStep(step) {
     step: step
   };
 };
-var removeStep = function removeStep(steps) {
+var removeStep = function removeStep(step) {
   return {
     type: REMOVE_STEP,
-    steps: steps
+    step: step
   };
 };
 
